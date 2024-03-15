@@ -25,6 +25,8 @@ steps:
       - |
         mkdir -p /usr/bin \
           && ln -sf /toolchain/bin/env /usr/bin/env
+        ln -sf /toolchain/bin/python3 /toolchain/bin/python
+        pip3 install pyelftools
 
         tar xf u-boot.tar.bz2 --strip-components=1
       - |
@@ -33,13 +35,13 @@ steps:
     build:
       - |
         export ROCKCHIP_TPL=rockchip_rk3566_ddr.bin
-        export BL31=/libs/arm-trusted-firmware/rk3566/bl31.elf
+        export BL31=/libs/arm-trusted-firmware/bl31.elf
         export SCP=/dev/null
         make -j $(nproc) HOSTLDLIBS_mkimage="-lssl -lcrypto"
     install:
       - |
         mkdir -p /rootfs/artifacts/arm64/u-boot/soquartzcm4
-        cp -v u-boot.bin /rootfs/artifacts/arm64/u-boot/soquartzcm4
+        cp -v u-boot-rockchip.bin /rootfs/artifacts/arm64/u-boot/soquartzcm4
 finalize:
   - from: /rootfs
     to: /rootfs
