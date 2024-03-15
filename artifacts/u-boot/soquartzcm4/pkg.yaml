@@ -8,7 +8,7 @@ variant: scratch
 shell: /toolchain/bin/bash
 dependencies:
   - stage: base
-  - stage: arm-trusted-firmware
+  - stage: arm-trusted-firmware-rk3568
 steps:
   - sources:
       - url: https://ftp.denx.de/pub/u-boot/u-boot-{{ .uboot_version }}.tar.bz2
@@ -35,7 +35,7 @@ steps:
     build:
       - |
         export ROCKCHIP_TPL=rockchip_rk3566_ddr.bin
-        export BL31=/libs/arm-trusted-firmware/bl31.elf
+        export BL31=/libs/arm-trusted-firmware/rk3568/bl31.elf
         export SCP=/dev/null
         make -j $(nproc) HOSTLDLIBS_mkimage="-lssl -lcrypto"
     install:
