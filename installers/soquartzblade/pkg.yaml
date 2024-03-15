@@ -1,0 +1,28 @@
+name: soquartzblade
+variant: scratch
+shell: /toolchain/bin/bash
+dependencies:
+  - stage: base
+  - stage: u-boot
+    platform: linux/arm64
+  - stage: profiles
+steps:
+  - env:
+      GOPATH: /go
+    cachePaths:
+      - /.cache/go-build
+      - /go/pkg
+    build:
+      - |
+        export PATH=${PATH}:${TOOLCHAIN}/go/bin
+
+        cd /pkg/src
+        CGO_ENABLED=0 go build -o ./soquartzblade .
+    install:
+      - |
+        mkdir -p /rootfs/installers/
+
+        cp -p /pkg/src/soquartzblade /rootfs/installers/soquartzblade
+finalize:
+  - from: /rootfs
+    to: /
