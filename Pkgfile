@@ -28,4 +28,4 @@ vars:
   rockchip_rk3588_ddr_sha256: 5aa6271195e422a2c30a8e801baa64e4a10cbc6a5f1963f9a29e6dc85096c7bf
   rockchip_rk3588_ddr_sha512: fa0685c4065d48541304f9de9be4b095483eb33695128cde77eae80a71b6f405946150119e98bdbc5ca4a7cc18f4efdb574ff6ac52f7a385550e9ca3fbc4bb21
 labels:
-  org.opencontainers.image.source: https://github.com/pl4nty/talos-sbc-soquartz
+  org.opencontainers.image.source: https://github.com/pl4nty/talos-sbcs

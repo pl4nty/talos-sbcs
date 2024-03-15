@@ -1,8 +1,8 @@
 # commit to be tagged for the new release
 commit = "HEAD"
 
-project_name = "talos-sbc-soquartz"
-github_repo = "pl4nty/talos-sbc-soquartz"
+project_name = "talos-sbcs"
+github_repo = "pl4nty/talos-sbcs"
 match_deps = "^github.com/(pl4nty/[a-zA-Z0-9-]+)$"
 
 # previous = -
