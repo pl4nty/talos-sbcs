@@ -8,12 +8,17 @@ variant: scratch
 shell: /toolchain/bin/bash
 dependencies:
   - stage: base
+  - stage: arm-trusted-firmware
 steps:
   - sources:
       - url: https://ftp.denx.de/pub/u-boot/u-boot-{{ .uboot_version }}.tar.bz2
         destination: u-boot.tar.bz2
         sha256: "{{ .uboot_sha256 }}"
         sha512: "{{ .uboot_sha512 }}"
+      - url: https://raw.githubusercontent.com/rockchip-linux/rkbin/master/bin/rk35/rk3566_ddr_1056MHz_v{{ .rockchip_rk3566_ddr_version }}.bin
+        destination: rockchip_rk3566_ddr.bin
+        sha256: "{{ .rockchip_rk3566_ddr_sha256 }}"
+        sha512: "{{ .rockchip_rk3566_ddr_sha512 }}"
     env:
       SOURCE_DATE_EPOCH: {{ .BUILD_ARG_SOURCE_DATE_EPOCH }}
     prepare:
@@ -23,15 +28,18 @@ steps:
 
         tar xf u-boot.tar.bz2 --strip-components=1
       - |
-        make <board>_defconfig
+        make soquartz-cm4-rk3566_defconfig
         sed -i "s/CONFIG_TOOLS_LIBCRYPTO=y/# CONFIG_TOOLS_LIBCRYPTO is not set/" .config
     build:
       - |
+        export ROCKCHIP_TPL=rockchip_rk3566_ddr.bin
+        export BL31=/libs/arm-trusted-firmware/rk3566/bl31.elf
+        export SCP=/dev/null
         make -j $(nproc) HOSTLDLIBS_mkimage="-lssl -lcrypto"
     install:
       - |
-        mkdir -p /rootfs/artifacts/arm64/u-boot/board
-        cp -v u-boot.bin /rootfs/artifacts/arm64/u-boot/board
+        mkdir -p /rootfs/artifacts/arm64/u-boot/soquartzcm4
+        cp -v u-boot.bin /rootfs/artifacts/arm64/u-boot/soquartzcm4
 finalize:
   - from: /rootfs
     to: /rootfs

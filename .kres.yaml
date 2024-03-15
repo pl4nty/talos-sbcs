@@ -2,7 +2,7 @@
 kind: pkgfile.Build
 spec:
   targets:
-    - board
+    - soquartzcm4
   extraBuildArgs:
     - PKGS_PREFIX
     - PKGS

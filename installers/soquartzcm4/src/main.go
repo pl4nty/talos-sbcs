@@ -15,41 +15,35 @@ func main() {
 
 type BoardInstaller struct{}
 
-type boardExtraOptions struct {
-	Console    []string `json:"console"`
-	ConfigFile string   `json:"configFile"`
-}
+type boardExtraOptions struct{}
 
 func (i *BoardInstaller) GetOptions(extra boardExtraOptions) (overlay.Options, error) {
 	kernelArgs := []string{
 		"console=tty0",
-		"sysctl.kernel.kexec_load_disabled=1",
+		"console=ttyS2,1500000n8",
 		"talos.dashboard.disabled=1",
 	}
 
-	kernelArgs = append(kernelArgs, extra.Console...)
-
 	return overlay.Options{
-		Name:       "board",
+		Name:       "soquartzcm4",
 		KernelArgs: kernelArgs,
+		PartitionOptions: overlay.PartitionOptions{
+			Offset: 512 * 64,
+		},
 	}, nil
 }
 
 func (i *BoardInstaller) Install(options overlay.InstallOptions[boardExtraOptions]) error {
 	// allows to copy a directory from the overlay to the target
-	// err := copy.Dir(filepath.Join(options.ArtifactsPath, "arm64/firmware/boot"), filepath.Join(options.MountPrefix, "/boot/EFI"))
-	// if err != nil {
-	// 	return err
-	// }
-
-	// allows to copy a file from the overlay to the target
-	err := copy.File(filepath.Join(options.ArtifactsPath, "arm64/u-boot/board/u-boot.bin"), filepath.Join(options.MountPrefix, "/boot/EFI/u-boot.bin"))
+	err := copy.Dir(filepath.Join(options.ArtifactsPath, "arm64/dtb"), filepath.Join(options.MountPrefix, "/boot/EFI/dtb"))
 	if err != nil {
 		return err
 	}
 
-	if options.ExtraOptions.ConfigFile != "" {
-		// do something with the config file
+	// allows to copy a file from the overlay to the target
+	err = copy.File(filepath.Join(options.ArtifactsPath, "arm64/u-boot/soquartzcm4/u-boot-rockchip.bin"), filepath.Join(options.MountPrefix, "/boot/EFI/u-boot.bin"))
+	if err != nil {
+		return err
 	}
 
 	return nil
