@@ -54,7 +54,7 @@ PKGS ?= v1.7.0-alpha.0-33-g3aacf03
 
 # targets defines all the available targets
 
-TARGETS = soquartzcm4
+TARGETS = orangepi5 soquartzblade soquartzcm4 soquartzmodela
 
 # help menu
 

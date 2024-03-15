@@ -30,7 +30,7 @@ steps:
     install:
       - |
         mkdir -p /rootfs/arm-trusted-firmware/rk3588
-        cp build/rk3588/release/bl31/bl31.elf /rootfs/arm-trusted-firmware/bl31.elf
+        cp build/rk3588/release/bl31/bl31.elf /rootfs/arm-trusted-firmware/rk3588/bl31.elf
 finalize:
   - from: /rootfs
     to: /libs

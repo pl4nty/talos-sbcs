@@ -2,7 +2,10 @@
 kind: pkgfile.Build
 spec:
   targets:
-    - sbc-soquartz
+    - orangepi5
+    - soquartzblade
+    - soquartzcm4
+    - soquartzmodela
   extraBuildArgs:
     - PKGS_PREFIX
     - PKGS
