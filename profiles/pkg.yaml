@@ -5,3 +5,5 @@ finalize:
     to: /rootfs/profiles
   - from: /pkg/soquartzcm4
     to: /rootfs/profiles
+  - from: /pkg/soquartzmodela
+    to: /rootfs/profiles

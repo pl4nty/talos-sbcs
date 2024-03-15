@@ -3,7 +3,7 @@
 #     - https://u-boot.readthedocs.io/en/latest
 #   Broadcom/RaspberryPi
 #     - https://github.com/u-boot/u-boot/blob/master/doc/board/broadcom/raspberrypi.rst
-name: u-boot-soquartzcm4
+name: u-boot-soquartzmodela
 variant: scratch
 shell: /toolchain/bin/bash
 dependencies:
@@ -30,7 +30,7 @@ steps:
 
         tar xf u-boot.tar.bz2 --strip-components=1
       - |
-        make soquartz-cm4-rk3566_defconfig
+        make soquartz-model-a-rk3566_defconfig
         sed -i "s/CONFIG_TOOLS_LIBCRYPTO=y/# CONFIG_TOOLS_LIBCRYPTO is not set/" .config
     build:
       - |
@@ -40,8 +40,8 @@ steps:
         make -j $(nproc) HOSTLDLIBS_mkimage="-lssl -lcrypto"
     install:
       - |
-        mkdir -p /rootfs/artifacts/arm64/u-boot/soquartzcm4
-        cp -v u-boot-rockchip.bin /rootfs/artifacts/arm64/u-boot/soquartzcm4
+        mkdir -p /rootfs/artifacts/arm64/u-boot/soquartzmodela
+        cp -v u-boot-rockchip.bin /rootfs/artifacts/arm64/u-boot/soquartzmodela
 finalize:
   - from: /rootfs
     to: /rootfs

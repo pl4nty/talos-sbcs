@@ -3,7 +3,7 @@ variant: scratch
 shell: /toolchain/bin/bash
 dependencies:
   - stage: base
-  - stage: u-boot
+  - stage: u-boot-soquartzblade
     platform: linux/arm64
   - stage: profiles
 steps:

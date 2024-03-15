@@ -25,7 +25,7 @@ func (i *BoardInstaller) GetOptions(extra boardExtraOptions) (overlay.Options, e
 	}
 
 	return overlay.Options{
-		Name:       "soquartzblade",
+		Name:       "soquartzmodela",
 		KernelArgs: kernelArgs,
 		PartitionOptions: overlay.PartitionOptions{
 			Offset: 512 * 64,
@@ -41,7 +41,7 @@ func (i *BoardInstaller) Install(options overlay.InstallOptions[boardExtraOption
 	}
 
 	// allows to copy a file from the overlay to the target
-	err = copy.File(filepath.Join(options.ArtifactsPath, "arm64/u-boot/soquartzblade/u-boot-rockchip.bin"), filepath.Join(options.MountPrefix, "/boot/EFI/u-boot.bin"))
+	err = copy.File(filepath.Join(options.ArtifactsPath, "arm64/u-boot/soquartzmodela/u-boot-rockchip.bin"), filepath.Join(options.MountPrefix, "/boot/EFI/u-boot.bin"))
 	if err != nil {
 		return err
 	}
