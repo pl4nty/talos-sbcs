@@ -1,9 +1,7 @@
 name: profiles
 variant: scratch
 finalize:
-  - from: /pkg/soquartzblade
+  - from: /pkg/orangepi5
     to: /rootfs/profiles
   - from: /pkg/soquartzcm4
-    to: /rootfs/profiles
-  - from: /pkg/soquartzmodela
     to: /rootfs/profiles

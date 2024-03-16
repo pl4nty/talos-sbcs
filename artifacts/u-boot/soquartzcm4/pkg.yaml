@@ -16,7 +16,7 @@ steps:
         sha256: "{{ .uboot_sha256 }}"
         sha512: "{{ .uboot_sha512 }}"
       - url: https://raw.githubusercontent.com/rockchip-linux/rkbin/master/bin/rk35/rk3566_ddr_1056MHz_v{{ .rockchip_rk3566_ddr_version }}.bin
-        destination: rockchip_rk3566_ddr.bin
+        destination: rockchip_ddr.bin
         sha256: "{{ .rockchip_rk3566_ddr_sha256 }}"
         sha512: "{{ .rockchip_rk3566_ddr_sha512 }}"
     env:
@@ -34,7 +34,7 @@ steps:
         sed -i "s/CONFIG_TOOLS_LIBCRYPTO=y/# CONFIG_TOOLS_LIBCRYPTO is not set/" .config
     build:
       - |
-        export ROCKCHIP_TPL=rockchip_rk3566_ddr.bin
+        export ROCKCHIP_TPL=rockchip_ddr.bin
         export BL31=/libs/arm-trusted-firmware/rk3568/bl31.elf
         export SCP=/dev/null
         make -j $(nproc) HOSTLDLIBS_mkimage="-lssl -lcrypto"

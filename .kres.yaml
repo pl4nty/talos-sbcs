@@ -3,9 +3,7 @@ kind: pkgfile.Build
 spec:
   targets:
     - orangepi5
-    - soquartzblade
     - soquartzcm4
-    - soquartzmodela
   extraBuildArgs:
     - PKGS_PREFIX
     - PKGS
