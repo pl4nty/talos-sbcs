@@ -1,4 +1,4 @@
-name: orangepi5
+name: sbc-orangepi5
 variant: scratch
 shell: /toolchain/bin/bash
 dependencies:

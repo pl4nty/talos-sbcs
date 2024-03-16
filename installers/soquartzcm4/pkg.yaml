@@ -1,4 +1,4 @@
-name: soquartzcm4
+name: sbc-soquartzcm4
 variant: scratch
 shell: /toolchain/bin/bash
 dependencies:

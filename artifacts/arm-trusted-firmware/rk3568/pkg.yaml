@@ -6,7 +6,7 @@ dependencies:
 steps:
   - sources:
       # https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/16952
-      - url: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/snapshot/{{ .arm_trusted_firmware_rk3566_ref }}.tar.gz
+      - url: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/snapshot/{{ .arm_trusted_firmware_rk3568_ref }}.tar.gz
         destination: arm-trusted-firmware.tar.gz
         sha256: "{{ .arm_trusted_firmware_rk3568_sha256 }}"
         sha512: "{{ .arm_trusted_firmware_rk3568_sha512 }}"

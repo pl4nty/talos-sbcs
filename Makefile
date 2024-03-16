@@ -1,6 +1,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED, PLEASE DO NOT EDIT.
 #
-# Generated on 2024-03-16T00:18:08Z by kres latest.
+# Generated on 2024-03-16T00:22:59Z by kres latest.
 
 # common variables
 
@@ -54,8 +54,8 @@ PKGS ?= v1.7.0-alpha.0-33-g3aacf03
 
 # targets defines all the available targets
 
-TARGETS = orangepi5
-TARGETS += soquartzcm4
+TARGETS = sbc-orangepi5
+TARGETS += sbc-soquartzcm4
 
 # help menu
 
