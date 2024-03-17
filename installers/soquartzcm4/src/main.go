@@ -9,6 +9,7 @@ import (
 	"github.com/siderolabs/go-copy/copy"
 	"github.com/siderolabs/talos/pkg/machinery/overlay"
 	"github.com/siderolabs/talos/pkg/machinery/overlay/adapter"
+	"golang.org/x/sys/unix"
 )
 
 var off int64 = 512 * 64
