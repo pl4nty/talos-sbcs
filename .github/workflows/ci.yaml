@@ -2,9 +2,6 @@
 #
 # Generated on 2024-03-15T12:30:31Z by kres latest.
 
-env:
-  PLATFORM: linux/arm64
-
 name: default
 concurrency:
   group: ${{ github.head_ref || github.run_id }}

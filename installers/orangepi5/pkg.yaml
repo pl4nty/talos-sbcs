@@ -3,6 +3,8 @@ variant: scratch
 shell: /toolchain/bin/bash
 dependencies:
   - stage: base
+  - stage: kernel-orangepi5
+    platform: linux/arm64
   - stage: u-boot-orangepi5
     platform: linux/arm64
   - stage: profiles

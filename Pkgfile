@@ -3,11 +3,8 @@
 format: v1alpha2
 
 vars:
-  # renovate: datasource=github-tags extractVersion=^v(?<version>.*)$ depName=u-boot/u-boot
-  uboot_version: 2024.04-rc2
-  uboot_sha256: 3e7b394899b55a9d769f28a19b5425360ef2db465a53617bd354b01fb61992b2
-  uboot_sha512: f5c6d6a37ce6b34bd1ab2cddd5d0cacddfd19b5345934731df3a7ed454a3895ad2d14acbdb2e1b922b9571778e50b54cb7612b1798a04dfb991365d3344cd865
-  
+  TOOLS_IMAGE: ghcr.io/siderolabs/tools:v1.7.0-alpha.0-12-gdfee984
+
   # TODO renovate
   arm_trusted_firmware_rk3568_ref: 0ac3577101f7119b84f2e1fa2e88ea3f977d7480
   arm_trusted_firmware_rk3568_sha256: 4119352190d8466d8826b5bc904d05566dab7a95a11aadbf8dafa0ff1e9f267a
@@ -18,6 +15,18 @@ vars:
   arm_trusted_firmware_rk3588_sha256: f4239300ae98ed7c07e5eeea1ae77a7b962af226234b1a0b3d681260272f4792
   arm_trusted_firmware_rk3588_sha512: db970ae717677beac01887edc35d1826dc3331580dbab61687e3ca393ec78d01f28b1a5f79b20beda41ba70d0b22e0c31aea9f689ab1dc5326c65513805e50d1
 
+  # TODO rc?
+  # renovate: datasource=git-tags extractVersion=^v(?<version>.*)$ depName=git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+  linux_orangepi5_version: 6.8.1
+  linux_orangepi5_sha256: 8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68
+  linux_orangepi5_sha512: 255921dd12f1043a4db38b5435b34773267c592f6712815c0851f1e0add71131fb00fd00746200eabdad29ba5b6e38a768da9c048da47fb5aa59d8eaef7d236e
+
+  # TODO renovate
+  # renovate: datasource=github-tags extractVersion=^v(?<version>.*)$ depName=u-boot/u-boot
+  uboot_version: 2024.04-rc2
+  uboot_sha256: 3e7b394899b55a9d769f28a19b5425360ef2db465a53617bd354b01fb61992b2
+  uboot_sha512: f5c6d6a37ce6b34bd1ab2cddd5d0cacddfd19b5345934731df3a7ed454a3895ad2d14acbdb2e1b922b9571778e50b54cb7612b1798a04dfb991365d3344cd865
+  
   # TODO renovate
   rockchip_rk3566_ddr_version: 1.21
   rockchip_rk3566_ddr_sha256: 8c9bf50c0d9220fecd13de06e0b69119c4e10efff83b061e3f09995995ffc8b6

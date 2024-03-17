@@ -35,7 +35,7 @@ BLDR := docker run --rm --user $(shell id -u):$(shell id -g) --volume $(PWD):/sr
 # docker build settings
 
 BUILD := docker buildx build
-PLATFORM ?= linux/amd64,linux/arm64
+PLATFORM ?= linux/arm64
 PROGRESS ?= auto
 PUSH ?= false
 CI_ARGS ?=
@@ -140,6 +140,16 @@ $(TARGETS):
 .PHONY: deps.png
 deps.png:  ## Generates a dependency graph of the Pkgfile.
 	@$(BLDR) graph | dot -Tpng -o deps.png
+
+kernel-olddefconfig-%:
+	@$(MAKE) local-kernel-build-$* TARGET_ARGS="--build-arg=KERNEL_TARGET=olddefconfig" PLATFORM=linux/arm64 DEST="artifacts/kernel/$*/build"
+
+kernel-%:
+	for platform in $(shell echo $(PLATFORM) | tr "," " "); do \
+	  arch=`basename $$platform` ; \
+	  $(MAKE) docker-kernel-prepare PLATFORM=$$platform TARGET_ARGS="--tag=$(REGISTRY)/$(USERNAME)/kernel:$(TAG)-$$arch --load"; \
+	  docker run --rm -it --entrypoint=/toolchain/bin/bash -e PATH=/toolchain/bin:/bin -w /src -v $$PWD/kernel/build/config-$$arch:/host/.hostconfig $(REGISTRY)/$(USERNAME)/kernel:$(TAG)-$$arch -c 'cp /host/.hostconfig .config && make $* && cp .config /host/.hostconfig'; \
+	done
 
 .PHONY: rekres
 rekres:

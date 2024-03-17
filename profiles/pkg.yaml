@@ -1,3 +1,4 @@
+# TODO split this, so separate installers don't share profiles
 name: profiles
 variant: scratch
 finalize:
