@@ -1,4 +1,4 @@
-# syntax = ghcr.io/siderolabs/bldr:v0.3.0
+# syntax = ghcr.io/siderolabs/bldr:v0.3.2
 
 format: v1alpha2
 
@@ -17,7 +17,7 @@ vars:
 
   # TODO rc?
   # renovate: datasource=git-tags extractVersion=^v(?<version>.*)$ depName=git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
-  linux_orangepi5_version: 6.8.1
+  linux_orangepi5_version: 6.11.5
   linux_orangepi5_sha256: 8d0c8936e3140a0fbdf511ad7a9f21121598f3656743898f47bb9052d37cff68
   linux_orangepi5_sha512: 255921dd12f1043a4db38b5435b34773267c592f6712815c0851f1e0add71131fb00fd00746200eabdad29ba5b6e38a768da9c048da47fb5aa59d8eaef7d236e
 
