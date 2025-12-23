@@ -1,11 +1,14 @@
 module soquartzcm4
 
-go 1.22.1
+go 1.25.3
 
 require (
 	github.com/siderolabs/go-copy v0.1.0
-	github.com/siderolabs/talos/pkg/machinery v1.7.0-alpha.1
-	golang.org/x/sys v0.18.0
+	github.com/siderolabs/talos/pkg/machinery v1.12.0
+	golang.org/x/sys v0.39.0
 )
 
-require gopkg.in/yaml.v3 v3.0.1 // indirect
+require (
+	go.yaml.in/yaml/v4 v4.0.0-rc.3 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
+)
